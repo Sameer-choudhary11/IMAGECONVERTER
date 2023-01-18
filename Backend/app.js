@@ -14,13 +14,12 @@ app.listen(8000,()=>{
     console.log("Server started on Port 8000");
 })
 
-
 app.use(
     cors({
       origin: true,
       credentials: true,
     })
-  );
+);
     
 app.post("/convert",async(req,res)=>{
     try {

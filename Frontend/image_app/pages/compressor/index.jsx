@@ -12,6 +12,7 @@ export default function Resize()
     let [width,setWidth] = useState();
     let [height,setHeight] = useState();
     let [image,setImage] = useState();
+    let [Size,setSize] = useState(0);
     let [ext,setExt] = useState("Original");
     let [quality,setQuality] = useState(60);
     let [indicator,setInd] = useState(1);
@@ -20,6 +21,7 @@ export default function Resize()
         setImage(e.target.files[0]);
         setFile(URL.createObjectURL(e.target.files[0]));
         const { width, height } = await getImageSize(URL.createObjectURL(e.target.files[0]));
+        setSize(Math.round(e.target.files[0].size/1024/1024));   
         setHeight(height);
         setWidth(width);                        
     }
@@ -55,22 +57,28 @@ export default function Resize()
     {
         e.preventDefault();
         setInd(0);
-        let Form = new FormData;
-        Form.append("format",ext);
-        Form.append("height",height);
-        Form.append("width",width);
-        Form.append("quality",quality);
-        Form.append("Image",image);
-        let res = await fetch("http://localhost:8000/Compress",{method:'POST',body:Form}).then((d)=>{return d.json()}).catch((d)=>{console.log(d);});        
-        if(/^SC_\d{4}/.test(res))
+        if(Size!=undefined&Size<50)
         {
-            setInd(2);
-            setImageId(res);
-        }else if(res=="Not Support"){
-          setImageId("Not Support")
+          let Form = new FormData;
+          Form.append("format",ext);
+          Form.append("height",height);
+          Form.append("width",width);
+          Form.append("quality",quality);
+          Form.append("Image",image);
+          let res = await fetch("http://localhost:8000/Compress",{method:'POST',body:Form}).then((d)=>{return d.json()}).catch((d)=>{console.log(d);});        
+          if(/^SC_\d{4}/.test(res))
+          {
+              setInd(2);
+              setImageId(res);
+          }else if(res=="Not Support"){
+            setImageId("Not Support")
+          }else{
+            setImageId("Not Support")
+          }
         }else{
           setImageId("Not Support")
         }
+        
     }
     async function Download()
     {
@@ -116,7 +124,7 @@ export default function Resize()
                   <div className="flex text-sm text-gray-600">
                     <label htmlFor="file-upload" className="relative cursor-pointer rounded-md bg-white font-medium text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:text-indigo-500">
                       <span>Upload a file</span>
-                      <input id="file-upload" name="file-upload" type="file" onChange={handleChange} accept="image/*" className="sr-only"/>
+                      <input id="file-upload" name="file-upload" type="file" onChange={handleChange} accept="image/png,image/gif,image/jpeg,image/jpg,image/webp,image/heif,image/tiff,image/avif" className="sr-only"/>
                     </label>
                     <p className="pl-1">or drag and drop</p>
                   </div>
@@ -146,7 +154,7 @@ export default function Resize()
                 <label htmlFor="Height" className="block text-medium font-medium text-black">
                 Quality
                   </label>
-                    <input  type="number" name="height" placeholder="" defaultValue={80}  onChange={Quality}  className="mt-1 w-full rounded-md border-2 border-indigo-400  bg-transparent p-2"/>
+                    <input  type="range" name="quality" placeholder="" defaultValue={80}  onChange={Quality}  className="mt-1 w-full rounded-md border-2 border-indigo-400  bg-transparent p-2"/>
                 </div>
                 <div className="col-span-2">
                 <h1 className="text-2xl fw-bold py-2 text-indigo-600">Export Setting</h1>

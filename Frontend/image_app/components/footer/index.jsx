@@ -19,7 +19,7 @@ export default function Footer()
       <div className="mx-auto max-w-sm lg:max-w-none">
         <h1 className="text-center text-white fw-semibold text-2xl">ImageConvert</h1>
         <p
-          className="mt-4 text-start text-sm text-gray-400 dark:text-gray-400 lg:text-left lg:text-sm ">
+          className="mt-4 text-start text-sm text-gray-400 dark:text-gray-400 lg:text-left lg:text-sm font-medium">
           ImageConvert.in is a web-based platform that allows users to easily convert their images from one format to another. With a simple drag-and-drop interface, users can quickly and easily convert their files, supporting a wide range of popular formats such as JPEG, PNG, GIF, and more. The site also offers advanced options for resizing and editing images, making it the perfect tool for anyone looking to manipulate their image files.
         </p>
       </div>
@@ -36,13 +36,13 @@ export default function Footer()
             aria-label="Footer Services Nav"
             className="mt-6 flex flex-col space-y-1"
           >
-            <Link href="/" legacyBehavior><a className="text-gray-700 transition hover:text-gray-700/75 dark:text-white dark:hover:text-white/75">
+            <Link href="/" legacyBehavior><a className="text-gray-700 transition hover:text-gray-700/75 dark:text-white dark:hover:text-white/75 font-medium">
               Image Convert
             </a></Link>
-            <Link href="/Resize/" legacyBehavior><a  className="text-gray-700 transition hover:text-gray-700/75 dark:text-white dark:hover:text-white/75">
+            <Link href="/Resize/" legacyBehavior><a  className="text-gray-700 transition hover:text-gray-700/75 dark:text-white dark:hover:text-white/75 font-medium">
               Image Resize
             </a></Link>
-            <Link href="/compressor/" legacyBehavior><a className="text-gray-700 transition hover:text-gray-700/75 dark:text-white dark:hover:text-white/75">
+            <Link href="/compressor/" legacyBehavior><a className="text-gray-700 transition hover:text-gray-700/75 dark:text-white dark:hover:text-white/75 font-medium">
               Image Compressor
             </a></Link>
             
@@ -58,14 +58,14 @@ export default function Footer()
             aria-label="Footer About Nav"
             className="mt-6 flex flex-col space-y-1"
           >
-            <Link href="/about" legacyBehavior><a className="text-gray-700 transition hover:text-gray-700/75 dark:text-white dark:hover:text-white/75">
+            <Link href="/about" legacyBehavior><a className="text-gray-700 transition hover:text-gray-700/75 dark:text-white dark:hover:text-white/75 font-medium">
               About Us
             </a></Link>
             <Link href="/privacy_policy" legacyBehavior><a
-              className="text-gray-700 transition hover:text-gray-700/75 dark:text-white dark:hover:text-white/75">
+              className="text-gray-700 transition hover:text-gray-700/75 dark:text-white dark:hover:text-white/75 font-medium">
               Privacy Policy
             </a></Link>
-            <Link href="/contact" legacyBehavior><a className="text-gray-700 transition hover:text-gray-700/75 dark:text-white dark:hover:text-white/75">
+            <Link href="/contact" legacyBehavior><a className="text-gray-700 transition hover:text-gray-700/75 dark:text-white dark:hover:text-white/75 font-medium">
               Contact Us
             </a></Link>
             
@@ -85,7 +85,7 @@ export default function Footer()
           >
             
 
-            <Link href="/contact" legacyBehavior><a className="text-gray-700 transition hover:text-gray-700/75 dark:text-white dark:hover:text-white/75">
+            <Link href="/contact" legacyBehavior><a className="text-gray-700 transition hover:text-gray-700/75 dark:text-white dark:hover:text-white/75 font-medium">
               Contact Us
             </a></Link>     
           </nav>

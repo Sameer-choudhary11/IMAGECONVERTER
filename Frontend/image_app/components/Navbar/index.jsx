@@ -56,7 +56,11 @@ export default function Navbar()
   </div>
 </header>
 
-
+<div className="bg-blue-600 px-4 py-2 text-white">
+  <p className="text-center text-sm font-medium ">
+    File Size Must be equal to 50mb less than 50mb
+  </p>
+</div>
 
     </>)
 }
