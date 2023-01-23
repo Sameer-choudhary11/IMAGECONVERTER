@@ -1,12 +1,10 @@
 const express = require("express");
 const app = express();
-const converter= require("./model/converter");
 const path = require("path");
 const ConGroup = require("./services/convertGroup");
 const WriteFile = require("./services/writeFile");
 const cors = require("cors");
 const fileUpload = require("express-fileupload")
-const { json } = require("express");
 const generateUniqueId = require('generate-unique-id');
 app.use(express.urlencoded({ extended: true }));
 app.use(fileUpload({createParentPath:true}));
@@ -34,6 +32,7 @@ app.post("/convert",async(req,res)=>{
         await WriteFile.FileToSave("Convert/To_"+req.files.Image.name,req.files.Image.data);
         setTimeout(async() => {    
         msg = await ConGroup.Convert_To("Convert/To_"+req.files.Image.name,"SC_"+id,req.body);        
+        id=null;
         res.send(JSON.stringify(msg));
         }, 1000);                
       }else{
@@ -62,6 +61,7 @@ app.post("/Resize",async(req,res)=>{
       await WriteFile.FileToSave("Resize/"+req.files.Image.name,req.files.Image.data);
       setTimeout(async() => {
         msg =await ConGroup.Resize_("Resize/"+req.files.Image.name,"SR_"+id,height,width,format);
+        id=null,height=null,width=null,format=null;
         res.send(JSON.stringify(msg));
       }, 1000);
     } catch (error) {
@@ -88,6 +88,7 @@ app.post("/Compress",async(req,res)=>{
     await WriteFile.FileToSave("Compress/"+req.files.Image.name,req.files.Image.data);
     setTimeout(async() => {
       msg =await ConGroup.Compress_("Compress/"+req.files.Image.name,"SC_"+id,format,width,height,quality);
+      id=null,height=null,width=null,format=null,quality=null;
       res.send(JSON.stringify(msg));
     }, 1000);
   } catch (error) {
