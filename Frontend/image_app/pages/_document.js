@@ -15,7 +15,7 @@ export default function Document() {
         <meta name="author" content="SAMEER"/>
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>ImageConverter</title>
+      <title>ImageConvert</title>
       <body>
         <Main />
         <NextScript />
